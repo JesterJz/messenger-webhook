@@ -76,7 +76,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
   
   /** UPDATE YOUR VERIFY TOKEN **/
-  const VERIFY_TOKEN = "<YOUR VERIFY TOKEN>";
+  const VERIFY_TOKEN = "ma_xac_minh_cua_ban";
   
   // Parse params from the webhook verification request
   let mode = req.query['hub.mode'];
@@ -172,7 +172,7 @@ function callSendAPI(sender_psid, response) {
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "qs": { "access_token": "EAAh0OGhnCZB4BAHYQqSxSGeqOeBsZC2vEbhE4v8VCkQ9jtHF0EXCxAPO9XLt5bNbZAchYLIcBfVZAnqIwOZATgWVZCe1mmDcQYbBGgmR8k1nVWLcZApXuKh32MpW1akLxdTJuaIoWZBG10rMMpGKDvZAcwEC6lZCl2wMcDChialDQ6w0FnaasXKCZCkXHrfcnZAYVOAZD" },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
