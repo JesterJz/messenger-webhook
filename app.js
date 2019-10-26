@@ -11,7 +11,7 @@ const
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 app.get('/', (req, res) => {
-  res.send("Home page. Server running okay.");
+  console.log("Home page. Server running okay.");
 });
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {  
