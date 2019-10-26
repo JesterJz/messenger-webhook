@@ -9,10 +9,6 @@ const
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-
-app.get('/', (req, res) => {
-  console.log("Home page. Server running okay.");
-});
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {  
 
@@ -153,7 +149,7 @@ function callSendAPI(sender_psid, response) {
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": "EAAh0OGhnCZB4BAHYQqSxSGeqOeBsZC2vEbhE4v8VCkQ9jtHF0EXCxAPO9XLt5bNbZAchYLIcBfVZAnqIwOZATgWVZCe1mmDcQYbBGgmR8k1nVWLcZApXuKh32MpW1akLxdTJuaIoWZBG10rMMpGKDvZAcwEC6lZCl2wMcDChialDQ6w0FnaasXKCZCkXHrfcnZAYVOAZD" },
+    "qs": { "access_token": "EAAh0OGhnCZB4BAOVcQMBwZAw21uHlmagBIVosvyhc4zYs6gGUh27FHWri8KPsPkVMP1dr6U2muobvZAVZAgZBWFAr0f2DJ6CYjdQZCxy0740i40PgecGBppwv4ZAV7dT5cuOZALfKtLUxWb1oXc92LGOxnt7tMFi2qK3StfJZCWxfSLoKEm8ZBNQk0eiR4NbTGzkoZD" },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
