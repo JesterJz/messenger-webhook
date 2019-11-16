@@ -156,9 +156,11 @@ function callSendAPI(sender_psid, response) {
   }
 
 //send HTTP from webhook to restful API
-  request(
-    'http://localhost/Jester/public/api/test/a',
-     { json: true }, (err, res, body) => 
+  request({
+    "uri" : "http://localhost/Jester/public/api/test",
+    "method" : "POST" ,
+    "json" : request_body
+  },(err, res, body) => 
      {
       if (err) { return console.log(err); }
       console.log(body.url);
