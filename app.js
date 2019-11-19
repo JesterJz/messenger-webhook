@@ -8,7 +8,7 @@ const
   app = express().use(body_parser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 1331, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 //test server
 app.get('/', (req, res) => {
   res.send("Server chạy ngon lành.");
