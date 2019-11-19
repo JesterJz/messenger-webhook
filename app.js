@@ -90,7 +90,7 @@ function handleMessage(sender_psid, received_message) {
     // will be added to the body of our request to the Send API
     $mess = getapiserver(sender_psid);
     response = {
-      "text": `You sent the message: "${mess}". Now send me an attachment!`
+      "text": `You sent the message: "${mess.text}". Now send me an attachment!`
     }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
