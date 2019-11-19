@@ -89,8 +89,11 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     response = {
-      "text": `You sent the message: "${sender_psid}". Now send me an attachment!`
+      "text": getapiserver();
     }
+    // response = {
+    //   "text": `You sent the message: "${sender_psid}". Now send me an attachment!`
+    // }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
@@ -154,29 +157,33 @@ function callSendAPI(sender_psid, response) {
     },
     "message": response
   }
-
-//send HTTP from webhook to restful API
-  request({
-    "uri" : "http://localhost/Jester/public/api/test",
-    "method" : "POST" ,
-    "json" : request_body
-  },(err, res, body) => 
-     {
-      if (err) { return console.log(err); }
-      console.log(body.url);
-      console.log(body.explanation);
-    });
   // Send the HTTP request to the Messenger Platform
-  // request({
-  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
-  //   "qs": { "access_token": "EAAD0iXJrxfoBAJ8ZAKTkzRI59FKFqy6ZCdZAYmdMUMKtmTyo0VoysVEHVyUNBIyRYbSYkg4NH19UeMzlSKljEMFZBJSILiB6AwKnBuDtBbWQOaGgPVvcUdQWN1YX3ZAxFrhW3LOnmfG4Pm7LZAQdgYXYtmmfKaJx5RhhAXKlX1nZBMI8wrxNuZAq2Djga40CtD0ZD" },
-  //   "method": "POST",
-  //   "json": request_body
-  // }, (err, res, body) => {
-  //   if (!err) {
-  //     console.log('message sent!')
-  //   } else {
-  //     console.error("Unable to send message:" + err);
-  //   }
-  // }); 
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": "EAAD0iXJrxfoBAJ8ZAKTkzRI59FKFqy6ZCdZAYmdMUMKtmTyo0VoysVEHVyUNBIyRYbSYkg4NH19UeMzlSKljEMFZBJSILiB6AwKnBuDtBbWQOaGgPVvcUdQWN1YX3ZAxFrhW3LOnmfG4Pm7LZAQdgYXYtmmfKaJx5RhhAXKlX1nZBMI8wrxNuZAq2Djga40CtD0ZD" },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
+}
+function getapiserver() {
+  $ApiUrl = "http://localhost/Jester/public/api/hello";  
+
+  $ch = curl_init();
+
+  curl_setopt($ch, CURLOPT_HEADER, 0);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($ch, CURLOPT_VERBOSE, 0);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  $responseapi = curl_exec($ch);
+
+  curl_close($ch);
+  return $responseapi;
 }
