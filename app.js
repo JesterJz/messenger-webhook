@@ -12,7 +12,12 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 //test server
 app.get('/', (req, res) => {  
-  res.send("Server chạy ngon lành."); 
+  res.send("Server chạy ngon lành.");
+  request('http://localhost/Jester/public/api/hello', { json: true }, (err, res, body) => {
+  if (err) { return console.log(err); }
+  res.send(body.url);
+  res.send(body.explanation);
+  }); 
 });
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {  
