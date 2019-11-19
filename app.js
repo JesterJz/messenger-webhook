@@ -9,10 +9,7 @@ const
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-//test server
-app.get('/', (req, res) => {
-  res.send("Server chạy ngon lành.");
-});
+
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {  
 
@@ -57,7 +54,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
   
   /** UPDATE YOUR VERIFY TOKEN **/
-  const VERIFY_TOKEN = "ma_xac_minh_cua_ban";
+  const VERIFY_TOKEN = "ma_xac_nhan_cua_ban";
   
   // Parse params from the webhook verification request
   let mode = req.query['hub.mode'];
@@ -84,34 +81,26 @@ app.get('/webhook', (req, res) => {
 function handleMessage(sender_psid, received_message) {
   let response;
   
-  // Nếu nội dung mess gửi đến là text
+  // Checks if the message contains text
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-    // response = {
-    //   "text": getapiserver();
-    // }
     response = {
-      "text": `You sent the message: "${sender_psid}". Now send me an attachment!`
+      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
     }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
-    response = 
-    {
-      "attachment": 
-      {
+    response = {
+      "attachment": {
         "type": "template",
-        "payload": 
-        {
+        "payload": {
           "template_type": "generic",
-          "elements": 
-          [{
+          "elements": [{
             "title": "Is this the right picture?",
             "subtitle": "Tap a button to answer.",
             "image_url": attachment_url,
-            "buttons": 
-            [
+            "buttons": [
               {
                 "type": "postback",
                 "title": "Yes!",
@@ -148,6 +137,7 @@ function handlePostback(sender_psid, received_postback) {
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
+
 
 function callSendAPI(sender_psid, response) {
   // Construct the message body
