@@ -147,10 +147,11 @@ function callSendAPI(sender_psid, response) {
     },
     "message": response
   }
+
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": "EAAD0iXJrxfoBABuc2qrTTT6wJK0N3wzgQFZCujRp4ZBZATg6fC7FDn9BpkG7tM3VUJFnAXpGFfuZCiZBVofIodktmASrBRESVNFLQJg5ZCxV5cYawFhplWeWWKllfUxSCJ0TnApidC4t4ALay5bBI1MemP5wbk13JlokGOAYlhhO52cKSzohF60csFAOqdCxsZD" },
+    "qs": { "access_token": "EAAD0iXJrxfoBAHyTZBl3UaPtlB6Gc7QErIPQr4Nt6tWD93fVMtasVBV9ZAOGQxUVvj3pqtO8pMRX2U9o7RXPek4bya0crT34wVqVcx4zBmV3EcY0TiK1FVxU4tIZCUqJ44AVCqZAXfqHYxGrq6GGZBxUo4l3pNS8Jq2kECW387FlFUlmlVJRg69vviDRkQScZD" },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
@@ -161,19 +162,3 @@ function callSendAPI(sender_psid, response) {
     }
   }); 
 }
-// function getapiserver() {
-//   $ApiUrl = "http://localhost/Jester/public/api/hello";  
-
-//   $ch = curl_init();
-
-//   curl_setopt($ch, CURLOPT_HEADER, 0);
-//   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//   curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-//   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-//   curl_setopt($ch, CURLOPT_VERBOSE, 0);
-//   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//   $responseapi = curl_exec($ch);
-
-//   curl_close($ch);
-//   return $responseapi;
-// }
