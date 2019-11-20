@@ -93,12 +93,9 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-      request('http://localhost/Jester/public/api/hello', function (error, response, body) {
-    let person = JSON.parse(body);
-    });
     response = {
 
-      "text": `You sent the message: "${person[0].title}". Now send me an attachment!`
+      "text": `có con cặt đây`
     }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
