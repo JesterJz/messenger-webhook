@@ -93,8 +93,9 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-    request('http://localhost/Jester/public/api/hello', function (error, response, body) {
-    response = JSON.parse(body);
+    request('http://localhost/Jester/public/api/hello', function (error, responsea, body) {
+    var person = JSON.parse(body);
+    response = person[0].title;
     //console.log(person[0].title); // Print the HTML for the Google homepage.
 });
     // response = {
