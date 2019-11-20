@@ -11,7 +11,7 @@ const
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 //test server
-app.get('/test', (req, res) => {  
+app.get('/', (req, res) => {  
   res.send("Server chạy ngon lành.");
 //   request('http://localhost/Jester/public/api/hello', function (error, response, body) {
 //   let person = JSON.parse(body);
@@ -88,16 +88,16 @@ app.get('/webhook', (req, res) => {
 
 function handleMessage(sender_psid, received_message) {
   let response;
-    request('http://localhost/Jester/public/api/hello', function (error, response, body) {
-  let person = JSON.parse(body);
-  console.log(person[0].id); // Print the HTML for the Google homepage.
-});
+//     request('http://localhost/Jester/public/api/hello', function (error, response, body) {
+//   let person = JSON.parse(body);
+//   console.log(person[0].id); // Print the HTML for the Google homepage.
+// });
   // Checks if the message contains text
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     response = {
-      "text": `mày nói gì nói đi thằng zo zan hóa"${person[0].id}"`
+      "text": `mày nói gì nói đi thằng zo zan hóa`
     }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
