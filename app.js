@@ -12,10 +12,11 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 //test server
 app.get('/', (req, res) => {  
-  request('http://localhost/Jester/public/api/hello', { json: true }, (err, res, body) => {
-  if (err) { return console.log(err); }
-  res.send(body.explanation);
-  }); 
+  res.send("Server chạy ngon lành.");
+//   request('http://localhost/Jester/public/api/hello', function (error, response, body) {
+//   var person = JSON.parse(body);
+//   console.log(person[0].title); // Print the HTML for the Google homepage.
+// });
 });
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {  
@@ -92,9 +93,14 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-    response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
-    }
+    request('http://localhost/Jester/public/api/hello', function (error, response, body) {
+    response = JSON.parse(body);
+    //console.log(person[0].title); // Print the HTML for the Google homepage.
+});
+    // response = {
+
+    //   "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+    // }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
