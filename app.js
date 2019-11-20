@@ -8,7 +8,7 @@ const
   app = express().use(body_parser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 2000, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 //test server
 app.get('/', (req, res) => {  
@@ -95,7 +95,7 @@ function handleMessage(sender_psid, received_message) {
     // will be added to the body of our request to the Send API
     response = {
 
-      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+      "text": `mày nói gì nói đi thằng zo zan hóa`
     }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
