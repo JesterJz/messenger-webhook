@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 //                     var person = JSON.parse(body);
 //                     console.log(person);
 //             });
-// });
+ });
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {  
 
