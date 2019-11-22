@@ -103,7 +103,7 @@ function handleMessage(sender_psid, received_message) {
               let person = JSON.parse(body);
               console.log(person.first_name);
             });
-    response = person;
+    response = person.first_name;
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
