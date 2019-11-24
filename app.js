@@ -92,18 +92,7 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-   request({
-              url: `https://graph.facebook.com/v2.6/2288633681263136`,
-              qs: {
-                  access_token: "EAAD0iXJrxfoBAPXutCmRh6aQRqXVQEywZAdZBdgiU19iZBWnWedO0kaaZC7pAT9tVuRSMy93BHQWanzWlKZBkJRpsGDUEfULGHvHZC2ecZB3IEjPebIfOzdLZBLHHpRZCynvC25USuWo6TPMvwUPiLTy13hM0HRpCjglcZB9Ev0ZAUx8v5F9VEZCMAuNc8oRJmZCRZBMoZD"
-              },
-              method: 'GET',
-            }, function(error, response, body) 
-            {
-              let person = JSON.parse(body);
-              console.log(person.first_name);
-            });
-    response = person.first_name;
+  getapiname(sender_psid);
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
@@ -153,6 +142,21 @@ function handlePostback(sender_psid, received_postback) {
   callSendAPI(sender_psid, response);
 }
 
+function getapiname(sender_psid)
+{
+     request({
+              url: `https://graph.facebook.com/v2.6/2288633681263136`,
+              qs: {
+                  access_token: "EAAD0iXJrxfoBAPXutCmRh6aQRqXVQEywZAdZBdgiU19iZBWnWedO0kaaZC7pAT9tVuRSMy93BHQWanzWlKZBkJRpsGDUEfULGHvHZC2ecZB3IEjPebIfOzdLZBLHHpRZCynvC25USuWo6TPMvwUPiLTy13hM0HRpCjglcZB9Ev0ZAUx8v5F9VEZCMAuNc8oRJmZCRZBMoZD"
+              },
+              method: 'GET',
+            }, function(error, response, body) 
+            {
+              let person = JSON.parse(body);
+              console.log(person.first_name);
+            });
+     callSendAPI(sender_psid,person.first_name);
+}
 function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
