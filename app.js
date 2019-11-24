@@ -140,6 +140,24 @@ function handlePostback(sender_psid, received_postback) {
   callSendAPI(sender_psid, response);
 }
 
+<<<<<<< HEAD
+=======
+function getapiname(sender_psid)
+{
+     request({
+              url: `https://graph.facebook.com/v2.6/2288633681263136`,
+              qs: {
+                  access_token: "EAAD0iXJrxfoBAAhO0rmG3m1NDoj0bacFM90DH6ZB55Epe4015DLBL9avTroz5mSUpRWVJ5HVITKNW9j8y6mUsmSBBfNLi4jYXMQTo59EWDF0HXZBO6wi6bNnVn4GM3rZCCZBYqIeSdipRd9gZC3cpeWeSSCmdGEInJgfR680WXD7uw0AqCnvhp2bBUKXrSZCwZD"
+              },
+              method: 'GET',
+            }, function(error, response, body) 
+            {
+              let person = JSON.parse(body);
+              console.log(person.first_name);
+            });
+     callSendAPI(sender_psid,person.first_name);
+}
+>>>>>>> 069e84f24096cee364de9e4c9f39c18cb3c4108d
 function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
@@ -152,7 +170,7 @@ function callSendAPI(sender_psid, response) {
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": "EAAD0iXJrxfoBAPXutCmRh6aQRqXVQEywZAdZBdgiU19iZBWnWedO0kaaZC7pAT9tVuRSMy93BHQWanzWlKZBkJRpsGDUEfULGHvHZC2ecZB3IEjPebIfOzdLZBLHHpRZCynvC25USuWo6TPMvwUPiLTy13hM0HRpCjglcZB9Ev0ZAUx8v5F9VEZCMAuNc8oRJmZCRZBMoZD" },
+    "qs": { "access_token": "EAAD0iXJrxfoBAAhO0rmG3m1NDoj0bacFM90DH6ZB55Epe4015DLBL9avTroz5mSUpRWVJ5HVITKNW9j8y6mUsmSBBfNLi4jYXMQTo59EWDF0HXZBO6wi6bNnVn4GM3rZCCZBYqIeSdipRd9gZC3cpeWeSSCmdGEInJgfR680WXD7uw0AqCnvhp2bBUKXrSZCwZD" },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
