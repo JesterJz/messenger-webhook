@@ -140,35 +140,12 @@ function handlePostback(sender_psid, received_postback) {
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
-function callSendAPI(sender_psid, response) {
-  // Construct the message body
-  let request_body = {
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": response
-  }
-
-  // Send the HTTP request to the Messenger Platform
-  request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": "EAAD0iXJrxfoBAAhO0rmG3m1NDoj0bacFM90DH6ZB55Epe4015DLBL9avTroz5mSUpRWVJ5HVITKNW9j8y6mUsmSBBfNLi4jYXMQTo59EWDF0HXZBO6wi6bNnVn4GM3rZCCZBYqIeSdipRd9gZC3cpeWeSSCmdGEInJgfR680WXD7uw0AqCnvhp2bBUKXrSZCwZD" },
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent!');
-    } else {
-      console.error("Unable to send message:" + err);
-    }
-  }); 
-}
 function callgetapi(sender_psid)
 {
  request({
           url: `https://graph.facebook.com/v2.6/2288633681263136`,
           qs: {
-              access_token: "EAAD0iXJrxfoBAAhO0rmG3m1NDoj0bacFM90DH6ZB55Epe4015DLBL9avTroz5mSUpRWVJ5HVITKNW9j8y6mUsmSBBfNLi4jYXMQTo59EWDF0HXZBO6wi6bNnVn4GM3rZCCZBYqIeSdipRd9gZC3cpeWeSSCmdGEInJgfR680WXD7uw0AqCnvhp2bBUKXrSZCwZD"
+              access_token: "EAAD0iXJrxfoBAGjOfiPhvumwBmEuM4cEzvESxfQqZBt7uMvmr1u1pcH0Vqx42vidcHwGS3IB7pfzhtbCcpNFQOGCmPQDeInWaj4J6RgIPAu4O92ZCk5sk7VDZBtt6AZA2ZCxwnGtksGuYI8if6nklNw9ZBp7CLyV4qKK12LgEPYG3aZCZBj1QWHoh1Dj0udUzVcZD"
           },
           method: 'GET',
         }, function(err, res, body){
@@ -184,4 +161,27 @@ function callgetapi(sender_psid)
         }
         });
  callSendAPI(sender_psid,response);
+}
+function callSendAPI(sender_psid, response) {
+  // Construct the message body
+  let request_body = {
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response
+  }
+
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": "EAAD0iXJrxfoBAGjOfiPhvumwBmEuM4cEzvESxfQqZBt7uMvmr1u1pcH0Vqx42vidcHwGS3IB7pfzhtbCcpNFQOGCmPQDeInWaj4J6RgIPAu4O92ZCk5sk7VDZBtt6AZA2ZCxwnGtksGuYI8if6nklNw9ZBp7CLyV4qKK12LgEPYG3aZCZBj1QWHoh1Dj0udUzVcZD" },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!');
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
 }
