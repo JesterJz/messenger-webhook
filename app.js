@@ -8,7 +8,7 @@ const
   app = express().use(body_parser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 1331, () => console.log('webhook is listening'));
 
 //test server
 app.get('/', (req, res) => {  
@@ -176,7 +176,9 @@ function callgetapi(sender_psid)
            console.log('message sent!');
            let person = JSON.parse(body);
            console.log(person.first_name);
-            response = person.first_name;
+           let response = {
+               "text" : person.first_name
+           }
         } else {
            console.error("Unable to send message:" + err); 
         }
