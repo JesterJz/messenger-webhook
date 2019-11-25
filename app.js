@@ -177,7 +177,7 @@ function callgetapi(sender_psid)
            let person = JSON.parse(body);
            console.log(person.first_name);
            let response = {
-               "text" : person.first_name
+               "text": person.first_name
            }
         } else {
            console.error("Unable to send message:" + err); 
