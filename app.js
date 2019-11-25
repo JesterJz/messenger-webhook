@@ -171,17 +171,15 @@ function callgetapi(sender_psid)
               access_token: "EAAD0iXJrxfoBAAhO0rmG3m1NDoj0bacFM90DH6ZB55Epe4015DLBL9avTroz5mSUpRWVJ5HVITKNW9j8y6mUsmSBBfNLi4jYXMQTo59EWDF0HXZBO6wi6bNnVn4GM3rZCCZBYqIeSdipRd9gZC3cpeWeSSCmdGEInJgfR680WXD7uw0AqCnvhp2bBUKXrSZCwZD"
           },
           method: 'GET',
-        }, function(err, res, body) =>
-        if(!err)
-        { 
+        }, function(err, res, body){
+        if(!err) { 
            console.log('message sent!');
            let person = JSON.parse(body);
            console.log(person.first_name);
             response = person.first_name;
-        }
-        else
-          {
+        } else {
            console.error("Unable to send message:" + err); 
-          });
+        }
+        });
  callSendAPI(sender_psid,response);
 }
