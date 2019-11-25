@@ -157,13 +157,13 @@ function callSendAPI(sender_psid, response) {
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('message sent!')
+      console.log('message sent!');
     } else {
       console.error("Unable to send message:" + err);
     }
   }); 
 }
-function callgetapi(sender_psid, response)
+function callgetapi(sender_psid)
 {
  request({
           url: `https://graph.facebook.com/v2.6/2288633681263136`,
@@ -171,11 +171,17 @@ function callgetapi(sender_psid, response)
               access_token: "EAAD0iXJrxfoBAAhO0rmG3m1NDoj0bacFM90DH6ZB55Epe4015DLBL9avTroz5mSUpRWVJ5HVITKNW9j8y6mUsmSBBfNLi4jYXMQTo59EWDF0HXZBO6wi6bNnVn4GM3rZCCZBYqIeSdipRd9gZC3cpeWeSSCmdGEInJgfR680WXD7uw0AqCnvhp2bBUKXrSZCwZD"
           },
           method: 'GET',
-        }, function(err, res, body) 
-        {
-          let person = JSON.parse(body);
-          console.log(person.first_name);
-          response = person.first_name;
-        });
+        }, function(err, res, body) =>
+        if(!err)
+        { 
+           console.log('message sent!');
+           let person = JSON.parse(body);
+           console.log(person.first_name);
+            response = person.first_name;
+        }
+        else
+          {
+           console.error("Unable to send message:" + err); 
+          });
  callSendAPI(sender_psid,response);
 }
